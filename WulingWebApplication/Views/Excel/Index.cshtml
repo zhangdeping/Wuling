@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "excel";
+}
+
+<div class="filebtn">
+    @using (Html.BeginForm("importexcel", "Excel", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <samp>请选择要上传的Excel文件：</samp>
+            <span id="txt_Path"></span>
+            <strong>选择文件<input name="file" type="file" id="file" /></strong>@*
+                @Html.AntiForgeryToken() //防止跨站请求伪造(CSRF:Cross-site request forgery)攻击
+            *@<input type="submit" id="ButtonUpload" value="提交" class="offer" />
+    }
+</div>
+
+<form action="/Excel/ImportExcel" method="post" enctype="multipart/form-data">
+    <input type="file" name="files" multiple />
+    <input type="submit" value="提交" />
+</form>
+
+
+
